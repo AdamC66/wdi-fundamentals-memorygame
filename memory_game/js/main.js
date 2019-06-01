@@ -2,7 +2,7 @@ var cards = [
 {
 rank:"queen",
 suit:"hearts",
-cardImage:"images/queen-of-hears.png"
+cardImage:"images/queen-of-hearts.png"
 },
 {
 rank:"queen",
@@ -23,10 +23,10 @@ cardImage:"images/king-of-diamonds.png"
 
 ];
 var cardsInPlay = [];
-
+var cardElement;
 	function createBoard() {
 		for (var i = 0; i < cards.length; i++) {
-			var cardElement = document.createElement('img');
+			cardElement = document.createElement('img');
 			cardElement.setAttribute('src', 'images/back.png');
 			cardElement.setAttribute('data-id', i);
 			cardElement.addEventListener('click',flipCard);
@@ -36,8 +36,11 @@ var cardsInPlay = [];
 	function checkForMatch(){
 		if(cardsInPlay[0]=== cardsInPlay[1]){
 			alert("You found a match!");
+			cardsInPlay= [];
 		}else{
 			alert("Sorry try again");
+			cardsInPlay= [];
+			
 		}		
 	}
 
@@ -46,10 +49,8 @@ var cardsInPlay = [];
 		console.log("User flipped " + cards[cardID].rank);
 		console.log(cards[cardID].suit);
 		console.log(cards[cardID].cardImage);
-
 		cardsInPlay.push(cards[cardID].rank);
-
-		this.setAttribute('src',cardImage)
+		this.setAttribute('src',cards[cardID].cardImage);
 
 
 		if(cardsInPlay.length === 2){
@@ -62,4 +63,3 @@ var cardsInPlay = [];
 //may need to move this
 
 createBoard();
-	
